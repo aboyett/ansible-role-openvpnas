@@ -1,0 +1,21 @@
+---
+# Package states: installed or latest
+openvpnas_pkg_state: installed
+
+# Service states: started or stopped
+openvpnas_service_state: started
+
+# Service enabled on startup: yes or no
+openvpnas_service_enabled: yes
+
+openvpnas_version: 2.0.6
+
+openvpnas_deb_url: "http://swupdate.openvpn.org/as/openvpn-as-{{openvpnas_version}}-Ubuntu12.{{ansible_architecture}}.deb"
+
+openvpnas_profil: "Default"
+
+openvpnas_params:
+   - "cs.ssl_method": "SSLv3"
+   - "iptables.vpn.disable.filter": "True"
+   - "iptables.vpn.disable.nat": "True"
+   - "iptables.vpn.disable.mangle": "True"

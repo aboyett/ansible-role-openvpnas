@@ -1,0 +1,3 @@
+---
+openvpnas_base_path: "/usr/local/openvpn_as/"
+openvpnas_etc_path: "{{openvpnas_base_path}}/etc"

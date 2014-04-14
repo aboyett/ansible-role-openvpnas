@@ -1,0 +1,22 @@
+---
+- name: download openvpnas for Ubuntu
+  get_url: url={{ openvpnas_deb_url }} dest=/root/packages/
+  when: ansible_distribution == 'Ubuntu'
+  tags: ["packages","openvpnas"]
+
+- name: install openvpnas for Ubuntu
+  command: dpkg -E -i {{ openvpnas_deb_url }}
+  register: dpkg_install_result
+  changed_when: "'already installed' not in dpkg_install_result.stderr"
+  tags: ["packages","openvpnas"]
+
+- name: configure openvpnas
+  command: "{{openvpnas_base_path}}/scripts/confdba --key={{item.key}} --value={{item.value}} --prof={{openvpnas_profil}}"
+  notify: restart openvpnas
+  with_items: openvpnas_params 
+  tags: ["configuration","openvpnas"]
+
+- name: ensure openvpnas is started/stopped
+  service: name=openvpnas state={{ openvpnas_service_state }} enabled={{ openvpnas_service_enabled }}
+  tags: ["service","openvpnas"]
+
