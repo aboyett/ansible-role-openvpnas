@@ -7,15 +7,16 @@
       openvpnas_arch: amd_64
   when: 'ansible_architecture == "x86_64"'
 
-- name: download openvpnas for Ubuntu
+- name: download openvpnas for Debian/Ubuntu
   get_url: url={{ openvpnas_deb_url }} dest={{openvpnas_download_dir}}
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: ["packages","openvpnas"]
 
-- name: install openvpnas for Ubuntu
+- name: install openvpnas for Debian/Ubuntu
   command: dpkg -E -i {{ openvpnas_download_dir }}/{{ openvpnas_deb_file }}
   register: dpkg_install_result
   changed_when: "'already installed' not in dpkg_install_result.stderr"
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   tags: ["packages","openvpnas"]
 
 - name: configure openvpnas
