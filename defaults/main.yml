@@ -8,7 +8,7 @@ openvpnas_service_state: started
 # Service enabled on startup: yes or no
 openvpnas_service_enabled: yes
 
-openvpnas_version: 2.0.6
+openvpnas_version: 2.0.26
 
 openvpnas_deb_url: "http://swupdate.openvpn.org/as/openvpn-as-{{openvpnas_version}}-Ubuntu12.{{ansible_architecture}}.deb"
 
