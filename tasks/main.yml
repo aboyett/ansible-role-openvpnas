@@ -1,4 +1,7 @@
 ---
+- name: create packages download dir
+  file: path=/root/packages state=directory
+
 - name: download openvpnas for Ubuntu
   get_url: url={{ openvpnas_deb_url }} dest=/root/packages/
   when: ansible_distribution == 'Ubuntu'
