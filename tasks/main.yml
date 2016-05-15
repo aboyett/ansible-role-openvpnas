@@ -2,8 +2,13 @@
 - name: create packages download dir
   file: path=/root/packages state=directory
 
+- name: override OpenVPN architecture on amd64
+  set_fact:
+      openvpnas_arch: amd_64
+  when: 'ansible_architecture == "x86_64"'
+
 - name: download openvpnas for Ubuntu
-  get_url: url={{ openvpnas_deb_url }} dest=/root/packages/
+  get_url: url={{ openvpnas_deb_url }} dest={{openvpnas_download_dir}}
   when: ansible_distribution == 'Ubuntu'
   tags: ["packages","openvpnas"]
 
