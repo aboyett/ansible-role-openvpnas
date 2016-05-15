@@ -10,7 +10,7 @@ openvpnas_service_enabled: yes
 
 openvpnas_version: 2.0.26
 
-openvpnas_deb_url: "http://swupdate.openvpn.org/as/openvpn-as-{{openvpnas_version}}-Ubuntu12.{{ansible_architecture}}.deb"
+openvpnas_deb_url: "https://swupdate.openvpn.org/as/openvpn-as-{{openvpnas_version}}-Ubuntu12.{{ansible_architecture}}.deb"
 
 openvpnas_download_dir: /root/packages
 
