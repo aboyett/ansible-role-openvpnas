@@ -8,7 +8,7 @@
   tags: ["packages","openvpnas"]
 
 - name: install openvpnas for Ubuntu
-  command: dpkg -E -i {{ openvpnas_deb_url }}
+  command: dpkg -E -i {{ openvpnas_download_dir }}/{{ openvpnas_deb_file }}
   register: dpkg_install_result
   changed_when: "'already installed' not in dpkg_install_result.stderr"
   tags: ["packages","openvpnas"]
